@@ -1,6 +1,6 @@
 /**
  * ALU (Arithmetic Logic Unit) module
- * 
+ *
  * This module performs various arithmetic and logical operations based on the control signal:
  *   - Addition
  *   - Subtraction
@@ -8,18 +8,18 @@
  *   - Bitwise OR
  *   - Bitwise XOR
  *   - Sign extension
- * 
+ *
  * Inputs:
  *   A, B (input [31:0]): Input operands, each 32 bits wide
  *   ALUControl (input [2:0]): 3-bit control signal for selecting ALU operation
- * 
+ *
  * Outputs:
  *   Result (output reg [31:0]): Result of the ALU operation
  *   Carry (output wire): Carry flag
  *   OverFlow (output wire): Overflow flag
  *   Zero (output wire): Zero flag
  *   Negative (output wire): Negative flag
- * 
+ *
  * Control Signal (ALUControl):
  *   ALUControl[2:0] | Operation
  *   ----------------|-----------------------------
@@ -29,8 +29,7 @@
  *          011      | Bitwise OR
  *          100      | Bitwise XOR
  *          101      | Sign extension
- * 
- * @author Your Name
+ *
  */
 
 module ALU(
