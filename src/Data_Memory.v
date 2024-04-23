@@ -1,15 +1,15 @@
 /**
  * Data Memory module
- * 
+ *
  * This module represents the data memory in the CPU. It is used to store and retrieve data.
- * 
+ *
  * Inputs:
  *   clk (input): Clock signal
  *   rst (input): Reset signal
  *   WE (input): Write enable signal
  *   A (input [31:0]): Address for memory access
  *   WD (input [31:0]): Data to be written to memory
- * 
+ *
  * Outputs:
  *   RD (output [31:0]): Data read from memory
  */
