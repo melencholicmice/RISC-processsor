@@ -5,7 +5,7 @@ module PC_Module_tb;
 
     // Inputs
     reg clk = 0;            // Clock signal
-    reg rst = 1;            // Reset signal
+    reg rst = 0;            // Reset signal
     reg [31:0] PC_Next;    // Next value of the Program Counter
 
     // Outputs
@@ -25,9 +25,9 @@ module PC_Module_tb;
     // Initial block
     initial begin
         // Reset PC
-        rst = 1;
+        rst = 0;
         #10;               // Wait for 10 time units
-        rst = 0;           // De-assert reset
+        rst = 1;           // De-assert reset
 
         // Test case 1: PC is incremented by 4
         PC_Next = 32'h0000_0004;
