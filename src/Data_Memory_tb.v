@@ -31,7 +31,7 @@ module Data_Memory_TB;
     parameter MEM_WIDTH = 32;    // Memory width
 
     // Signals
-    reg clk;
+    reg clk = 0;
     reg rst;
     reg WE;
     reg [31:0] A;
@@ -56,6 +56,12 @@ module Data_Memory_TB;
         rst = 1;
         #10;
         rst = 0;
+        #10;
+        rst = 1;
+        #10;
+        rst = 0;
+        #10;
+        rst = 1;
     end
 
     // Output file setup

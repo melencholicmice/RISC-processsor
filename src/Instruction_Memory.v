@@ -1,12 +1,12 @@
 /*
  * Instruction Memory
- * 
+ *
  * This module is responsible for storing and retrieving instructions from memory.
- * 
+ *
  * Module Inputs:
  *   rst: Reset signal
  *   A: Address input
- * 
+ *
  * Module Outputs:
  *   RD: Instruction output read from memory
  */
@@ -26,5 +26,14 @@ module Instruction_Memory(
     initial begin
         $readmemh("memfile.hex", mem);
     end
+
+    // initial begin
+    //     mem[0] = 32'hFFC4A303;
+    //     mem[1] = 32'h00832383;
+    //     mem[0] = 32'h0064A423;
+    //     mem[1] = 32'h00B62423;
+    //     mem[0] = 32'h0062E233;
+    //     mem[1] = 32'h00B62423;
+    // end
 
 endmodule
