@@ -45,7 +45,11 @@ module Register_File (
     initial begin
         // for first
         Register[9] = 32'h00000020;
-        
+        // for 0062E233 and
+        Register[6] = 32'h00000002;
+        Register[5] = 32'h00000003;
+
+
     end
 
 endmodule
