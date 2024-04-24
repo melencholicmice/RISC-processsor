@@ -23,17 +23,17 @@ module Instruction_Memory(
     assign RD = (~rst) ? {32{1'b0}} : mem[A[31:2]];
 
     // Read memory contents from file
-    initial begin
-        $readmemh("memfile.hex", mem);
-    end
-
     // initial begin
-    //     mem[0] = 32'hFFC4A303;
-    //     mem[1] = 32'h00832383;
-    //     mem[0] = 32'h0064A423;
-    //     mem[1] = 32'h00B62423;
-    //     mem[0] = 32'h0062E233;
-    //     mem[1] = 32'h00B62423;
+    //     $readmemh("memfile.hex", mem);
     // end
+
+    initial begin
+        mem[0] = 32'hFFC4A303;
+        mem[1] = 32'h00832383;
+        // mem[0] = 32'h0064A423;
+        // mem[1] = 32'h00B62423;
+        // mem[0] = 32'h0062E233;
+        // mem[1] = 32'h00B62423;
+    end
 
 endmodule

@@ -1,23 +1,18 @@
-/**
- * Test bench for Register_File module
- *
- * This test bench verifies the functionality of the Register_File module by testing different scenarios.
- */
 `timescale 1ns / 1ps
 `include "Register_File.v"
 
 module Register_File_tb;
 
     // Parameters
-    parameter WIDTH = 32;  // Width of the data bus
+    parameter WIDTH = 32;     // Width of the data bus
     parameter NUM_REGS = 32;  // Number of registers
 
     // Inputs
-    reg clk = 0;             // Clock signal
-    reg rst = 1;             // Reset signal
-    reg WE3;                 // Write enable signal for register A3
-    reg [4:0] A1, A2, A3;   // Address for register read/write operation
-    reg [WIDTH-1:0] WD3;    // Data to be written into register A3
+    reg clk = 0;              // Clock signal
+    reg rst = 1;              // Reset signal
+    reg WE3 = 0;                  // Write enable signal for register A3
+    reg [4:0] A1, A2, A3;    // Address for register read/write operation
+    reg [WIDTH-1:0] WD3;     // Data to be written into register A3
 
     // Outputs
     wire [WIDTH-1:0] RD1, RD2;  // Data read from registers A1 and A2
@@ -40,13 +35,8 @@ module Register_File_tb;
 
     // Test cases
     initial begin
-        // Reset
-        rst = 1;
-        #10;
-        rst = 0;
-        #10;
-
         // Test case 1: Write to register 3
+        rst = 1;
         WE3 = 1;
         A3 = 3;
         WD3 = 32'h0000000F;  // Write data 15 to register 3
@@ -57,14 +47,57 @@ module Register_File_tb;
         A3 = 3;
         #10;
 
-        // Test case 3: Read from register 5
+        // Test case 3: Write to register 5
+        WE3 = 1;
+        A3 = 5;
+        WD3 = 32'h0000FFFF;  // Write data 65535 to register 5
+        #10;
+
+        // Test case 4: Read from register 5
         WE3 = 0;
         A3 = 5;
         #10;
 
-        // Test case 4: Read from register 6
+        // Test case 5: Write to register 6
+        WE3 = 1;
+        A3 = 6;
+        WD3 = 32'h00000001;  // Write data 1 to register 6
+        #10;
+
+        // Test case 6: Read from register 6
         WE3 = 0;
         A3 = 6;
+        #10;
+
+        // Test case 7: Write to register 1
+        WE3 = 1;
+        A3 = 1;
+        WD3 = 32'h0000ABCD;  // Write data 43981 to register 1
+        #10;
+
+        // Test case 8: Read from register 1
+        WE3 = 0;
+        A3 = 1;
+        #10;
+
+        rst = 0;
+        WE3 = 1;
+        A3 = 6;
+        WD3 = 32'h00000001;  // Write data 1 to register 6
+        #10;
+
+        WE3 = 0;
+        A3 = 6;
+        #10;
+
+        WE3 = 1;
+        A3 = 1;
+        WD3 = 32'h0000ABCD;  // Write data 43981 to register 1
+        #10;
+
+        // Test case 8: Read from register 1
+        WE3 = 0;
+        A3 = 1;
         #10;
 
         // Add more test cases here
