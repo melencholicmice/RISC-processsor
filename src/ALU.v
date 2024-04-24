@@ -7,7 +7,7 @@
  *   - Bitwise AND
  *   - Bitwise OR
  *   - Bitwise XOR
- *   - Sign extension
+ *   - Zero extension
  *
  * Inputs:
  *   A, B (input [31:0]): Input operands, each 32 bits wide
@@ -28,7 +28,7 @@
  *          010      | Bitwise AND
  *          011      | Bitwise OR
  *          100      | Bitwise XOR
- *          101      | Sign extension
+ *          101      | Zero extension
  *
  */
 
@@ -42,6 +42,10 @@ module ALU(
     wire Cout; // Carry out wire
     wire [31:0] Sum; // Wire for holding the sum of A and B
 
+
+    // Carry out and sum calculation
+    assign {Cout, Sum} = (ALUControl[0] == 1'b0) ? A + B : A + (~B) + 1;
+
     // ALU operation based on ALUControl
     always @(*) begin
         case (ALUControl)
@@ -50,14 +54,10 @@ module ALU(
             3'b010: Result = A & B; // Bitwise AND
             3'b011: Result = A | B; // Bitwise OR
             3'b100: Result = A ^ B; // Bitwise XOR
-            3'b101: Result = {32{1'b0}}; // Sign extension
+            3'b101: Result = {31{1'b0},Sum[31]}; // Zero extension
             default: Result = 32'b0; // Default to 0 if control is not recognized
         endcase
     end
-
-    // Carry out and sum calculation
-    assign {Cout, Sum} = (ALUControl[0] == 1'b0) ? A + B : A + (~B) + 1;
-
     // Overflow calculation
     assign OverFlow = ((Sum[31] ^ A[31]) & (~((ALUControl[0] ^ B[31] ^ A[31]) & ~ALUControl[1])));
 
