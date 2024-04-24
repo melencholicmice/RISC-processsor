@@ -1,8 +1,8 @@
 /**
  * Register_File module
- * 
+ *
  * This module implements a register file that contains 32 32-bit registers. It supports read and write operations.
- * 
+ *
  * Inputs:
  *   clk (input): Clock signal
  *   rst (input): Reset signal
@@ -11,7 +11,7 @@
  *   A2 (input [4:0]): Address for register read operation 2
  *   A3 (input [4:0]): Address for register write operation
  *   WD3 (input [31:0]): Data to be written into register A3
- * 
+ *
  * Outputs:
  *   RD1 (output [31:0]): Data read from register A1
  *   RD2 (output [31:0]): Data read from register A2
@@ -43,8 +43,9 @@ module Register_File (
 
     // Initialize some registers with values
     initial begin
-        Register[5] = 32'h00000005;
-        Register[6] = 32'h00000004;
+        // for first
+        Register[9] = 32'h00000020;
+        
     end
 
 endmodule

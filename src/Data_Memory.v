@@ -40,6 +40,7 @@ module Data_Memory(
 
     // Initialize memory with some data
     initial begin
+        // fir first
         mem[28] = 32'h00000020;
     end
 
