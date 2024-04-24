@@ -54,7 +54,7 @@ module ALU(
             3'b010: Result = A & B; // Bitwise AND
             3'b011: Result = A | B; // Bitwise OR
             3'b100: Result = A ^ B; // Bitwise XOR
-            3'b101: Result = {31{1'b0},Sum[31]}; // Zero extension
+            3'b101: Result = {{31{Sum[31]}}, Sum}; // Zero extension
             default: Result = 32'b0; // Default to 0 if control is not recognized
         endcase
     end
